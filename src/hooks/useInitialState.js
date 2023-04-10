@@ -20,8 +20,10 @@ const useInitialState = () => {
       cart: state.cart.filter((product, index) => index !== indexValue),
     });
   };
+
   return {
     state,
+    setState,
     addToCart,
     removeFromCart,
   };

@@ -13,9 +13,6 @@ const Header = () => {
   const [toggleOrders, setToggleOrders] = useState(false);
   const { state } = useContext(AppContext);
 
-  //console.log(toggleOrders)
-
-
   const handleToggle = () => {
     setToggleMenu(!toggleMenu);
   };
@@ -26,12 +23,20 @@ const Header = () => {
 
   return (
     <nav>
-      <img src={menu} alt="menu" className="menu" />
-
       <div className="navbar-left">
-        <img src={logo} alt="logo" className="nav-logo" />
-        <Link to="/login" className='login'>Login</Link>
-        <Link to="/signup" className='login'>Sign Up</Link>
+        <Link to="/" className="login">
+          <img src={logo} alt="logo" className="nav-logo" />
+        </Link>
+
+        <Link to="/login" className="login">
+          Login
+        </Link>
+        <Link to="/signup" className="login">
+          Sign Up
+        </Link>
+        <Link to="/catalogue" className="login">
+          Catalogue
+        </Link>
       </div>
 
       <div className="navbar-right">
