@@ -8,6 +8,7 @@ const API = "https://api.escuelajs.co/api/v1/products";
 const Catalogue = () => {
   const products = useGetProducts(API);
   const [filteredProducts, setFilteredProducts] = useState(products);
+  const [searchProducts, setSearchProducts] = useState("");
 
   function clickHandler(e) {
     if (e.target.value === "0") {
@@ -31,6 +32,16 @@ const Catalogue = () => {
     setFilteredProducts(products);
   }, [products]);
 
+  function writeProduct(e) {
+    setSearchProducts(e.currentTarget.value);
+    console.log(searchProducts);
+    setFilteredProducts(
+      products.filter((product) =>
+        product.title.toLowerCase().includes(searchProducts.toLowerCase())
+      )
+    );
+  }
+
   return (
     <React.Fragment>
       <Header />
@@ -47,6 +58,7 @@ const Catalogue = () => {
           <option value="1">Cheaper Products</option>
           <option value="2">More Expensive Products</option>
         </select>
+        <input type="text" onChange={writeProduct} />
       </div>
       <ProductList products={filteredProducts} />
     </React.Fragment>
